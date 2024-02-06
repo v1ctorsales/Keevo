@@ -1,8 +1,10 @@
+// Importe os módulos necessários
 import express from 'express';
 import cors from 'cors';
-import rotaCriarTarefa from './backend/CriarTarefa.js';
 import { Sequelize } from 'sequelize';
 
+import rotaCriarTarefa from './backend/CriarTarefa.js';
+import rotaObterTodasTarefas from './backend/ObterTodasTarefas.js';
 
 const app = express();
 const port = 3001;
@@ -15,14 +17,27 @@ const sequelize = new Sequelize('todo-keevo', 'postgres', '1234', {
   dialect: 'postgres',
 });
 
-await sequelize.sync();
+async function iniciarServidor() {
+  try {
+    await sequelize.authenticate();
+    console.log('Conexão com o banco de dados estabelecida com sucesso.');
 
-console.log('Banco de dados sincronizado com sucesso.');
+    // Sincroniza o banco de dados
+    await sequelize.sync();
+    console.log('Banco de dados sincronizado com sucesso.');
 
+    // Define as rotas do Express
+    app.use('/CriarTarefa', rotaCriarTarefa);
+    app.use('/ObterTodasTarefas', rotaObterTodasTarefas);
 
-// Roteadores para diferentes partes do backend
-app.use('/CriarTarefa', rotaCriarTarefa);
+    // Inicia o servidor
+    app.listen(port, () => {
+      console.log(`Servidor está rodando em http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.error('Erro ao iniciar o servidor:', error);
+  }
+}
 
-app.listen(port, () => {
-  console.log(`Servidor está rodando em http://localhost:${port}`);
-});
+// Chama a função para iniciar o servidor
+iniciarServidor();
