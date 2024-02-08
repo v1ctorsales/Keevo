@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
       tarefa: novaTarefa.toJSON(),
       tarefas: tarefas, // Envie todas as tarefas atualizadas de volta para o frontend
       status: 'ok',
+      
     });
   } catch (error) {
     console.error('Erro ao criar a tarefa:', error);
