@@ -5,6 +5,7 @@ import { Sequelize } from 'sequelize';
 
 import rotaCriarTarefa from './backend/CriarTarefa.js';
 import rotaObterTodasTarefas from './backend/ObterTodasTarefas.js';
+import rotaExcluirTarefa from './backend/ExcluirTarefa.js'; // Importe a rota de exclusão de tarefas
 
 const app = express();
 const port = 3001;
@@ -29,6 +30,7 @@ async function iniciarServidor() {
     // Define as rotas do Express
     app.use('/CriarTarefa', rotaCriarTarefa);
     app.use('/ObterTodasTarefas', rotaObterTodasTarefas);
+    app.use('/ExcluirTarefa', rotaExcluirTarefa); // Adicione a rota de exclusão de tarefas
 
     // Inicia o servidor
     app.listen(port, () => {
