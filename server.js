@@ -7,6 +7,7 @@ import rotaCriarTarefa from './backend/CriarTarefa.js';
 import rotaObterTodasTarefas from './backend/ObterTodasTarefas.js';
 import rotaExcluirTarefa from './backend/ExcluirTarefa.js';
 import rotaAtualizarTarefa from './backend/AtualizarTarefa.js'
+//import rotaEditarTarefa from './backend/EditarTarefa.js'
 
 const app = express();
 const port = 3001;
@@ -31,8 +32,9 @@ async function iniciarServidor() {
     // Define as rotas do Express
     app.use('/CriarTarefa', rotaCriarTarefa);
     app.use('/ObterTodasTarefas', rotaObterTodasTarefas);
-    app.use('/ExcluirTarefa', rotaExcluirTarefa); // Adicione a rota de exclusão de tarefas
-    app.use('/AtualizarTarefa', rotaAtualizarTarefa); // Adicione a rota de exclusão de tarefas
+    app.use('/ExcluirTarefa', rotaExcluirTarefa);
+    app.use('/AtualizarTarefa', rotaAtualizarTarefa);
+   // app.use('/EditarTarefa', rotaEditarTarefa);
 
     // Inicia o servidor
     app.listen(port, () => {
