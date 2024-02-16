@@ -13,7 +13,7 @@ router.put('/:id', async (req, res) => {
         return res.status(404).json({ mensagem: 'Tarefa não encontrada' });
       }
   
-      // Em vez de excluir, atualize o status da tarefa
+      // Atualize o status da tarefa
       tarefa.status = tarefa.status === 'Concluída' ? 'Em Progresso' : 'Concluída';
       await tarefa.save();
   

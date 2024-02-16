@@ -1,4 +1,3 @@
-// ./backend/db/modelTarefas.js
 import { DataTypes } from 'sequelize';
 import sequelize from './sequelize.js';
 
@@ -18,7 +17,7 @@ const Tarefa = sequelize.define('Tarefa', {
   },
 }, {
   tableName: 'tarefas',
-  timestamps: false, // Esta opção desativa as colunas createdAt e updatedAt
+  timestamps: false,
 });
 
 export default Tarefa;

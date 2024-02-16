@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/tarefas', async (req, res) => {
   try {
-    // Busque todas as tarefas no banco de dados
+    // Busca todas as tarefas no banco de dados
     const tarefas = await Tarefa.findAll();
 
     // Envie as tarefas como resposta

@@ -1,4 +1,3 @@
-// ./backend/db/sequelize.js
 import { Sequelize } from 'sequelize';
 
 const sequelize = new Sequelize({
